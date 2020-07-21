@@ -1,0 +1,322 @@
+﻿<html>
+  <head>
+    <title>膜拜巨佬文章生成器</title>
+    <meta http-equiv ="content-type" content ="txt/html; charset = utf-8" />
+    <meta name ="viewport" content ="width=device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable = 0">
+    <script async src ="https://www.googletagmanager.com/gtag/js?id=G-BM8WXEWW3P"></script>
+  </head>
+  <body>
+    <div id="主体">
+      <div id="标题">膜拜巨佬文章生成器</div>
+      <div id="主题">
+        <span>主题</span>
+        <input></input>
+        <button onclick="生成文章()">生成</button>
+      </div>
+      <div id="文章"></div>
+    </div>
+  </body>
+</html>
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
+gtag("js", new Date());
+gtag("config", "G-BM8WXEWW3P");
+
+window.$ = function (selector){
+    return document.querySelector(selector);
+}
+
+function 获取网址参数(参数){
+    return new URL(window.location.href).searchParams.get(参数)
+}
+
+let 主题 = 获取网址参数("主题") || "You AK IOI"
+
+$("input").value = 主题;
+
+let 论述 = [
+    "现在，主题是非常重要的。所以，",
+    "本来看你奸诈狡猾的嘴脸，我就想一巴掌拍死你；但是当我看见你爆切快速阶乘算法，实在是下不去手！",
+    "我们不得不面对一个足以颠覆世界的事实，那就是，",
+    "主题的发生，到底需要如何做到，主题没有产生，又会如何产生。",
+    "而这些并不是完全重要，更加重要的问题是，",
+    "主题到底应该如何实现。",
+    "带着这些问题，请允本蒟蒻我来审视一下主题，",
+    "主题的关键是你需要如何实现它。",
+    "本蒟蒻跟你讲，抓住了问题的关键，其他一切则会迎刃而解。",
+    "主题的关键究竟是什么？ ",
+    "主题因何而发生？ ",
+    "每个人都不得不面对这些问题。在面对这种问题时，",
+    "一般来讲，我们都必须务必慎重地考虑。",
+    "要想清楚主题到底是一种怎么样的存在。",
+    "了解清楚主题到底是一种怎么样的存在，是解决一切问题的关键。",
+    "就我个人来说，您对我的意义，不能不说非常重大。",
+    "本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。",
+    "主题发生了会如何，不发生又会如何。",
+    "在这种困难的抉择下，本人辗转反侧，寝食难安。",
+    "生活中，若您出现了，我们就不得不考虑它出现了的事实。",
+    "这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。",
+    "我们都知道，只要有意义，那么就务必慎重考虑。",
+    "既然如此，",
+    "那么，",
+    "本蒟蒻认为，",
+    "一般来说，",
+    "总的来说，",
+    "既然如何，",
+    "经过上述讨论，",
+    "这样看来，",
+    "可是，即使是这样，主题的出现仍然代表了一定的意义。",
+    "对某些蒟蒻来说，主题不仅仅是一个重大的事件，还可能会改变他们的人生。"
+]
+
+let 名人名言 = [
+    "You JC IOI!",
+    "你吊打集训队！",
+    "md 你是哪门子蒟蒻？！",
+    "我 trl，您 tql！这是实话！",
+    "我无时无刻没在膜拜您！"
+]
+
+let 前面垫话 = [
+    "曾经说过：",
+    "曾在不经意间说过：",
+    "说过一句著名的话：",
+    "曾经提到过：",
+    "说过一句富有哲理的话："
+]
+
+let 后面垫话 = [
+    "这不禁令我深思。",
+    "带着这句话，我们还要更加慎重的审视这个问题：",
+    "这启发了我，",
+    "我希望诸位也能好好地体会这句话。",
+    "这句话语虽然很短，但令我浮想联翩。",
+    "这似乎解答了我的疑惑。",
+    "所以：您是全世界最强！",
+    "您笑起来有一种巨佬的风度！",
+    "我是你的儿子，你是我的儿子，但我们不是同一个节点，因为我 trl，您 tql！",
+    "orz!"
+]
+
+let 下取整 = Math.floor;
+let 同余乘数 = 233;
+let 同余加数 = 717;
+let 同余模 = Math.pow(2, 32);
+
+let 随机种子 = 获取网址参数("随机种子") || 3432948733;
+
+function 同余发生器() {
+    随机种子 = (随机种子 * 同余乘数 + 同余加数) % 同余模;
+    同余乘数 = ((同余乘数 - 同余模) * 同余加数 % 同余模 + 同余模) % 同余模;
+    if (同余乘数 >= 同余模 / 2) 同余加数 = 下取整(同余发生器() + 0.5);
+    return 随机种子 / 同余模;
+}
+
+function 随便取一句(列表){
+    let 坐标 = 下取整(同余发生器() * 列表.length);
+    return 列表[坐标];
+}
+
+function 随便取一个数(最小值 = 0, 最大值 = 200){
+    let 数字 = 同余发生器() * (最大值 - 最小值) + 最小值;
+    return 数字;
+}
+
+function 来点名人名言(){
+    let 名言 = 随便取一句(前面垫话) + 随便取一句(名人名言) + 随便取一句(后面垫话);
+    return 名言;
+}
+
+function 来点论述(){
+    let 句子 = 随便取一句(论述);
+    句子 = 句子.replace(RegExp("主题", "g"), 主题);
+    return 句子;
+}
+
+function 增加段落(段落){
+    if (段落[段落.length - 1] === " "){
+        段落 = 段落.slice(0, -2)
+    }
+    return "　　" + 段落
+}
+
+function 生成文章(){
+    主题 = $("input").value
+    history.pushState({url: window.location.href}, null, "?主题=" + 主题 + "&随机种子=" + 随机种子);
+    gtag("event", "generator", {"event_label": 主题, "seed": 随机种子,"title_seed" : 主题 + "_" + 随机种子});
+    let 文章 = []
+    let 段落 = "";
+    let 文章长度 = 0;
+    while (文章长度 < 5120){
+        let 随机数 = 随便取一个数();
+        if (随机数 <= 16 && 段落.length > 100){
+            段落 = 增加段落(段落);
+            文章.push(段落);
+            段落 = "";
+        } else if (随机数 <= 33){
+            let 句子 = 来点名人名言();
+            文章长度 = 文章长度 + 句子.length;
+            段落 = 段落 + 句子;
+        } else {
+            let 句子 = 来点论述();
+            文章长度 = 文章长度 + 句子.length;
+            段落 = 段落 + 句子;
+        }
+    }
+    段落 = 增加段落(段落);
+    文章.push(段落);
+
+
+    let 排版 = "<div>" + 文章.join("</div><div>") + "</div>";
+    $("#文章").innerHTML = 排版;
+    gtag('event', 'generator', {'event_label': 主题});
+}
+</script>
+<style>
+  @media screen and (max-width: 1024px) {
+    html{
+      font-size: 2vw;
+      color: #333333;
+    }
+    body{
+      margin: 0;
+    }
+    #主体{
+      border: 2px solid #333333;
+      margin: 6px;
+      padding: 6px;
+      background: #f8f8f8;
+    }
+    #标题{
+      font-size: 3rem;
+      line-height: 3rem;
+      text-align: center;
+    }
+    #主题{
+      text-align: center;
+      margin-top: 6px;
+      font-size: 0px;
+    }
+    #主题 span{
+      font-size: 2rem;
+      vertical-align: baseline;
+      margin-left: 6px;
+    }
+    #主题 input{
+      border: none;
+      border-bottom: #666666 2px solid;
+      padding: 1px 0 0 0;
+      margin: 0px 6px 0 6px;
+      vertical-align: baseline;
+      font-size: 2rem;
+      background: #f8f8f8;
+      color: #333333;
+      text-align: center;
+      min-width: 20%;
+    }
+    #主题 button{
+      border: 0;
+      padding: 3px 7px 3px 7px;
+      margin: 0;
+      vertical-align: top;
+      font-size: 1.4rem;
+      background: #454545;
+      color: #efefef;
+    }
+    #文章 div{
+      margin-top: 6px;
+      font-size: 2rem;
+      text-align: justify;
+    }
+    #页脚{
+      margin: 6px;
+    }
+    #页脚 p{
+      margin: 3px;
+      font-size: 1.4rem;
+      text-align: right;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    html{
+      font-size: 1.3vw;
+      color: #333333;
+    }
+    body{
+      margin: 0;
+    }
+    #主体{
+      border: 2px solid #333333;
+      margin: 20px;
+      padding: 20px;
+      background: #f8f8f8;
+    }
+    #标题{
+      font-size: 1.9rem;
+      line-height: 1.9rem;
+      text-align: center;
+    }
+    #主题{
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0px;
+    }
+    #主题 span{
+      font-size: 1rem;
+      vertical-align: baseline;
+      margin-left: 20px;
+    }
+    #主题 input{
+      border: none;
+      border-bottom: #666666 2px solid;
+      padding: 1px 0 0 0;
+      margin: 0px 20px 0 20px;
+      vertical-align: baseline;
+      font-size: 1rem;
+      background: #f8f8f8;
+      color: #333333;
+      text-align: center;
+      min-width: 20%;
+    }
+    #主题 button{
+      border: 0;
+      padding: 5px 15px 5px 15px;
+      margin: 0;
+      vertical-align: top;
+      font-size: 0.75rem;
+      background: #454545;
+      color: #efefef;
+    }
+    #文章 div{
+      margin-top: 20px;
+      text-align: justify;
+    }
+    #页脚{
+      margin: 20px;
+    }
+    #页脚 p{
+      margin: 5px;
+      font-size: 0.75rem;
+      text-align: right;
+    }
+    .链接{
+      color: #4169e1;
+    }
+    #页脚 span{
+      padding: 2px 0 0 0;
+      vertical-align: baseline;
+    }
+    .图标{
+      height: 0.7rem;
+      width: 0.7rem;
+      vertical-align: top;
+      margin-top: 4px;
+    }
+  }
+</style>
